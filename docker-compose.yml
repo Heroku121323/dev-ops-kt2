@@ -1,0 +1,19 @@
+#runner
+# This is a sample docker-compose.yml file for setting up a GitHub Actions self-hosted runner using Docker.
+
+services:
+  actions-runner:
+    image: myoung34/github-runner:latest
+    restart: unless-stopped
+    environment:
+      REPO_URL: https://github.com/Heroku121323/dev-ops-kt2
+      RUNNER_TOKEN: AW6G3TINURCMDLY43DT3QRDIEEI62  
+      RUNNER_NAME: docker-compose-runner
+      RUNNER_LABELS: docker,selfhosted
+      WORKDIR: /tmp/actions-runner/_work
+    volumes:
+      - runner-work:/tmp/actions-runner/_work
+      - /var/run/docker.sock:/var/run/docker.sock
+
+volumes:
+  runner-work:
