@@ -18,6 +18,7 @@ def get_city_name(city: str) -> str:
 
 
 def get_weather(city: str) -> dict:
+    #Добавить обработку ошибок
     """
     Get weather information for a given city.
     
