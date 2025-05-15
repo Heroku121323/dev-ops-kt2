@@ -4,7 +4,7 @@ on:
 
 jobs:
     build:
-        runs-on: self-hosted
+        runs-on: self-hosted #SELF HOSTED ALLLO
         steps:
             - name: Checkout code
               uses: actions/checkout@v4

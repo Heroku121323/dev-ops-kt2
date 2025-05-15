@@ -7,7 +7,7 @@ services:
     restart: unless-stopped
     environment:
       REPO_URL: https://github.com/Heroku121323/dev-ops-kt2
-      RUNNER_TOKEN: AW6G3TINURCMDLY43DT3QRDIEEI62  
+      RUNNER_TOKEN: AW6G3TMQVNBI6JEKDJXRQELIEVAPO
       RUNNER_NAME: docker-compose-runner
       RUNNER_LABELS: docker,selfhosted
       WORKDIR: /tmp/actions-runner/_work
