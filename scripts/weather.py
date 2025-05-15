@@ -32,8 +32,12 @@ def get_weather(city: str) -> dict:
         "lang": "ru"
     }
     
-    response = requests.get(url=API_URL, params=params, timeout=5)
-    response.raise_for_status()
+    try:
+        response = requests.get(url=API_URL, params=params, timeout=5)
+        response.raise_for_status()
+    except requests.exceptions.HTTPError as HTTPerr:
+        return f"Ошибка HTTP: {HTTPerr}"
+    
     json_eng = response.json()
     city_en = json_eng["location"]["name"]
     city_ru = get_city_name(city_en)
