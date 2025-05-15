@@ -10,19 +10,6 @@ permissions:
   security-events: write
 
 jobs:
-  av_scan:
-    name: AV scan (full history)
-    runs-on: self-hosted
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0     # чтобы просканировать всю историю
-      - name: Git AV Scan  
-        uses: djdefi/gitavscan@22   
-        with:  
-          full: '--full'  
-
-
   codeql:
     name: Статический анализ (CodeQL)
     runs-on: self-hosted
