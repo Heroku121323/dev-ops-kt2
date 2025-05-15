@@ -1,0 +1,74 @@
+name: Security checks
+
+
+on:
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: read
+  security-events: write
+
+jobs:
+  av_scan:
+    name: AV scan (full history)
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0     # чтобы просканировать всю историю
+      - name: Git AV Scan
+        uses: djdefi/gitavscan@main
+        with:
+          full: '--full'
+
+  codeql:
+    name: Статический анализ (CodeQL)
+    runs-on: self-hosted
+    strategy:
+      matrix:
+        language: [ 'python' ]  
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Инициализация CodeQL
+        uses: github/codeql-action/init@v2
+        with:
+          languages: ${{ matrix.language }}
+
+      - name: Авто-сборка
+        uses: github/codeql-action/autobuild@v2
+
+      - name: Запустить анализ
+        uses: github/codeql-action/analyze@v2
+        # with:
+        #     upload: false # удалить при пуше
+
+  lint-python:
+    name: Python lint (flake8)
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install flake8
+        run: pip install flake8
+
+      - name: Run flake8 (warnings only)
+        run: flake8 . --exit-zero
+
+
+#   label:
+#     name: Пометить PR лейблом sec-passed
+#     runs-on: self-hosted
+#     needs: [antivirus, codeql, linter]
+#     steps:
+#       - name: Добавить лейбл
+#         uses: actions-ecosystem/action-add-labels@v1
+#         with:
+#           github_token: ${{ secrets.GITHUB_TOKEN }}
+#           labels: sec-passed
