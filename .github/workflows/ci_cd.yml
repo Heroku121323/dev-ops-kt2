@@ -20,6 +20,7 @@ jobs:
   codeql:
     name: Статический анализ CodeQL
     runs-on: self-hosted
+    needs: print-info
     # strategy:
     #   matrix:
     #     language: [ 'python' ]  
@@ -42,6 +43,7 @@ jobs:
   lint-python:
     name: Python lint (flake8)
     runs-on: self-hosted
+    needs: print-info
     steps:
 
       - uses: actions/checkout@v4
