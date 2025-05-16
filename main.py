@@ -18,7 +18,7 @@ def weather(
     try:
         data = get_weather(city=city)
     except requests.exceptions.HTTPError as http_err:
-        typer.echo(f"Ошибка HTTP: {http_err}", fg=typer.colors.RED, err=True)
+        typer.secho(f"Ошибка HTTP: {http_err}", fg=typer.colors.RED, err=True)
         raise typer.Exit(1)
     
     if isinstance(data, str):

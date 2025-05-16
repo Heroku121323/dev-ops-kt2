@@ -4,7 +4,7 @@ on:
 
 jobs:
     build:
-        runs-on: self-hosted #SELF HOSTED ALLLO
+        runs-on: self-hosted #SELF HOSTED or ubuntu-latest
         steps:
             - name: Checkout code
               uses: actions/checkout@v4
@@ -18,4 +18,4 @@ jobs:
             - name: Run tests
               run: |
                 source .venv/bin/activate
-                python -v
+                pytest -n auto
