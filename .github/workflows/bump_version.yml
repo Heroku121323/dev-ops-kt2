@@ -1,8 +1,7 @@
 name: bump_version
 
 on:
-  pull_request:
-    types: [opened, synchronize, reopened]
+  workflow_dispatch:
 
 jobs:
   build-and-test:

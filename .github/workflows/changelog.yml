@@ -2,8 +2,7 @@
 name: Generate Changelog
 
 on:
-  pull_request:
-    types: [labeled]
+  workflow_dispatch:
 
 jobs:
   build-changelog:
