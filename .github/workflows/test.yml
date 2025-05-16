@@ -1,21 +1,26 @@
 name: Testing application
 on:
-    workflow_dispatch:
+  workflow_dispatch:
 
 jobs:
-    build:
-        runs-on: self-hosted #SELF HOSTED or ubuntu-latest
-        steps:
-            - name: Checkout code
-              uses: actions/checkout@v4
+  tests:
+    name: "Test: ${{ matrix.file }}"
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        file:
+          - tests/test_cli.py
+          - tests/test_weather.py
 
-            - name: Set up venv
-              run: |
-                  python3 -m venv .venv
-                  source .venv/bin/activate
-                  pip install -r requirements.txt
-        
-            - name: Run tests
-              run: |
-                source .venv/bin/activate
-                pytest -n auto
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up venv
+        run: |
+          python3 -m venv .venv
+          source .venv/bin/activate
+          pip install -r requirements.txt
+      - name: Run ${{ matrix.file }}
+        run: |
+          source .venv/bin/activate
+          pytest ${{ matrix.file }}
