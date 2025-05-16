@@ -18,18 +18,18 @@ jobs:
       - run: echo "Starting full CI/CD pipeline for ${{ github.event.pull_request.title }}"
   
   codeql:
-    name: Статический анализ (CodeQL)
+    name: Статический анализ CodeQL
     runs-on: self-hosted
-    strategy:
-      matrix:
-        language: [ 'python' ]  
+    # strategy:
+    #   matrix:
+    #     language: [ 'python' ]  
     steps:
       - uses: actions/checkout@v3
 
       - name: Инициализация CodeQL
         uses: github/codeql-action/init@v3
         with:
-          languages: ${{ matrix.language }}
+          languages: python
 
       - name: Авто-сборка
         uses: github/codeql-action/autobuild@v2
