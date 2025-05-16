@@ -63,7 +63,6 @@ jobs:
   label_sec:
     name: Пометить PR лейблом sec-passed
     runs-on: self-hosted
-    needs: [codeql, lint-python]
     steps:
       - name: Добавить лейбл
         uses: actions-ecosystem/action-add-labels@v1
@@ -73,7 +72,7 @@ jobs:
   tests:
       name: "Test: ${{ matrix.file }}"
       runs-on: self-hosted
-      needs: [label_sec]
+      needs: [codeql, lint-python]
       strategy:
         fail-fast: false
         matrix:
