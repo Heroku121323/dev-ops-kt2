@@ -1,0 +1,2 @@
+[console_scripts]
+ctl = main:app
