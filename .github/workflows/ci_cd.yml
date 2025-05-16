@@ -65,6 +65,7 @@ jobs:
   label_sec:
     name: Пометить PR лейблом sec-passed
     runs-on: self-hosted
+    if: ${{ github.event_name == 'pull_request' && github.event.action == 'labeled' && github.event.label.name == 'sec-passed' }}
     steps:
       - name: Добавить лейбл
         uses: actions-ecosystem/action-add-labels@v1
