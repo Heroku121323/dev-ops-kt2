@@ -6,6 +6,6 @@ services:
         RUNNER_NAME: "my-runner"
         RUNNER_REPOSITORY_URL: https://github.com/Heroku121323/dev-ops-kt2
         #RUNNER_ORGANIZATION_URL: ${RUNNER_ORGANIZATION_URL}
-        GITHUB_ACCESS_TOKEN: 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
+        GITHUB_ACCESS_TOKEN: 
       volumes:
         - /var/run/docker.sock:/var/run/docker.sock
