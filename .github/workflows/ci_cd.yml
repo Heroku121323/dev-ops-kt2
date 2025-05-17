@@ -65,6 +65,7 @@ jobs:
   label_sec:
     name: Пометить PR лейблом sec-passed
     runs-on: self-hosted
+    needs: [codeql, lint-python]
     if: ${{ github.event_name == 'pull_request' && github.event.action == 'labeled' && github.event.label.name == 'sec-passed' }}
     steps:
       - name: Добавить лейбл
@@ -164,7 +165,8 @@ jobs:
 
   create-release:
       name: Создать Release в GitHub
-      runs-on: ubuntu-latest
+      runs-on: self-hosted
+      needs: build-changelog
       if: ${{ github.event.label.name == 'PROD' }}
       steps:
         - name: Checkout
