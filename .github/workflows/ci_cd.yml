@@ -172,7 +172,7 @@ jobs:
           git push origin HEAD:${{ github.head_ref }}
 
       - name: Upload changelog as artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: changelog
           path: changelog.md
