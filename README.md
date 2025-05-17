@@ -7,4 +7,5 @@ weather - погода
 weater London
 тем
 состояние
+da dad a
 hello {name} - приветствие
