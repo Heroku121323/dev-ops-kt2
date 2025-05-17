@@ -3,7 +3,7 @@ name: Full CI/CD PipeLine
 on:
   workflow_dispatch:     
   pull_request:
-    types: [opened, synchronize, reopened, labeled]
+    types: [opened, synchronize, reopened]
 
 permissions:
   contents: read
