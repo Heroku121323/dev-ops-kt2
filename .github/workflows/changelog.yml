@@ -8,7 +8,7 @@ jobs:
   build-changelog:
     name: Формирование changelog.md
     runs-on: ubuntu-latest
-    if: ${{ github.event.label.name == 'changelog' }}
+    if: ${{ startsWith(github.head_ref, 'PROD/') && success() }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3

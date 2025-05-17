@@ -147,7 +147,7 @@ jobs:
     name: Формирование changelog.md
     runs-on: ubuntu-latest
     needs: bump-version
-    if: ${{ github.event.label.name == 'changelog' }}
+    if: ${{ startsWith(github.head_ref, 'PROD/') && success() }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -181,7 +181,7 @@ jobs:
       name: Создать Release в GitHub
       runs-on: ubuntu-latest
       needs: build-changelog
-      if: ${{ github.event.label.name == 'PROD' }}
+      if: ${{ startsWith(github.head_ref, 'PROD/') && success() }}
       steps:
         - name: Checkout
           uses: actions/checkout@v3
