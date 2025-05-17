@@ -95,6 +95,17 @@ jobs:
           run: |
             source .venv/bin/activate
             pytest ${{ matrix.file }}
+  label_test:
+    name: Пометить PR лейблом test-passed
+    runs-on: ubuntu-latest
+    needs: [tests]
+    if: ${{ github.event_name == 'pull_request' && github.event.action == 'labeled' && github.event.label.name == 'test-passed' }}
+    steps:
+      - name: Добавить лейбл
+        uses: actions-ecosystem/action-add-labels@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          labels: test-passed
   bump-version:
     name: Bump Version
     needs: tests
