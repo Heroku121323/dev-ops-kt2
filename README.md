@@ -41,4 +41,4 @@ ctl hello George
 Hello, George!
 ```
 
-.
+> cli hearts
