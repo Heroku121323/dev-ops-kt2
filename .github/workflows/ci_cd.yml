@@ -148,7 +148,7 @@ jobs:
 
   update-changelog:
     runs-on: ubuntu-latest
-    needs: tests
+    needs: bump-version
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
@@ -213,6 +213,7 @@ jobs:
   create-release:
       name: Создать Release в GitHub
       runs-on: ubuntu-latest
+      needs: bump-version
       if: ${{ contains(fromJson(toJson(github.event.pull_request.labels)).*.name, 'PROD') && success() }}
       steps:
         - name: Checkout
