@@ -36,5 +36,19 @@ def hello(name: str):
     """
     typer.echo(f"Hello {name}!")
 
+@app.command()
+def hearts():
+    """
+    print hearts
+    """
+    typer.echo("    ❤️       ❤️")
+    typer.echo("  ❤️   ❤️   ❤️   ❤️")
+    typer.echo(" ❤️      ❤️      ❤️")
+    typer.echo(" ❤️             ❤️")
+    typer.echo("  ❤️           ❤️")
+    typer.echo("    ❤️       ❤️")
+    typer.echo("      ❤️   ❤️")
+    typer.echo("        ❤️")
+
 if __name__ == "__main__":
     app()
