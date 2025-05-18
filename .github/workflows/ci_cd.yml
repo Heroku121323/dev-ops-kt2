@@ -193,7 +193,7 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add CHANGELOG.md
-        git commit -m "Update CHANGELOG.md for version $(cat version.txt)"
+        git commit -m "Update CHANGELOG.md for version $(cat version)"
         git push origin ${{ github.head_ref }}
 
     - name: Add changelog label
