@@ -159,7 +159,7 @@ jobs:
       id: changelog
       run: |
         CURRENT_DATE=$(date +"%Y-%m-%d")
-        NEW_VERSION=$(cat version.txt)
+        NEW_VERSION=$(cat version)
         BRANCH="${{ github.head_ref }}"
         PR_NUMBER="${{ github.event.pull_request.number }}"
         PR_TITLE="${{ github.event.pull_request.title }}"
