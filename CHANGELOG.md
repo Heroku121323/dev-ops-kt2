@@ -1,6 +1,12 @@
 # Changelog
 
 ## [1.1.1] - 2025-05-18
+### Branch: feature/hearts (PR #20)
+-  Новая функциональность: Feature/hearts
+
+
+
+## [1.1.1] - 2025-05-18
 ### Branch: dev (PR #19)
 -  Исправление ошибки: hotfix/workflow
 
