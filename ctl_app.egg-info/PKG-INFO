@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: ctl-app
-Version: 0.0.0
+Version: 1.1.1
 Summary: CLI для погоды и других команд
 Author: Ваше Имя
 Author-email: you@example.com
@@ -19,6 +19,17 @@ Dynamic: requires-dist
 Dynamic: requires-python
 Dynamic: summary
 
-# dev-ops-kt2
+# CLI приложение с разными функциями
 
-CLI с разными функциями
+## Установка
+1. linux 🐧
+
+Необходимо ввести одну команду
+```
+./install.md
+```
+
+## Функционал
+
+### Погода
+```
