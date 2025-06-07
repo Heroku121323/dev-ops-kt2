@@ -239,3 +239,33 @@ jobs:
             body: ${{ steps.meta.outputs.description }}
             draft: false
             prerelease: false
+
+  notify:
+      needs: create-release
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v3
+
+        - name: version in env
+          id: ver
+          run: echo "::set-output name=VER::$(cat version)"
+
+        - name: post message and changelog
+          env:
+            TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+            CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+            RELEASE_URL: "https://github.com/${{ github.repository }}/releases/tag/${{ steps.ver.outputs.VER }}"
+            REPO_URL: "https://github.com/${{ github.repository }}"
+          run: |
+            # 1) Отправляем сообщение с кликабельными ссылками
+            curl -s -X POST https://api.telegram.org/bot${TOKEN}/sendMessage \
+              -d chat_id=${CHAT_ID} \
+              -d parse_mode=HTML \
+              -d text="<b>Новый релиз</b>: <a href=\"${RELEASE_URL}\">посмотреть на GitHub</a>%0A<b>Версия:</b> v${{ steps.ver.outputs.VER }}%0A<b>Репозиторий:</b> <a href=\"${REPO_URL}\">GitHub</a>"
+
+            # 2) Отправляем файл CHANGELOG.md
+            curl -s -X POST https://api.telegram.org/bot${TOKEN}/sendDocument \
+              -F chat_id=${CHAT_ID} \
+              -F document=@CHANGELOG.md
+
+
