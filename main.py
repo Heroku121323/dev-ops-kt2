@@ -39,7 +39,7 @@ def hello(name: str):
 @app.command()
 def hearts():
     """
-    print hearts
+    print beautiful hearts
     """
     typer.echo("    ❤️       ❤️")
     typer.echo("  ❤️   ❤️   ❤️   ❤️")
