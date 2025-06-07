@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.2.2] - 2025-06-07
+### Branch: dev (PR #24)
+-  Исправление ошибки: prod hotfix
+
+
+
 ## [1.2.1] - 2025-06-07
 ### Branch: dev (PR #24)
 -  Исправление ошибки: prod hotfix
