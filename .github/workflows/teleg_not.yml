@@ -18,7 +18,7 @@ jobs:
         env:
           TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          RELEASE_URL: "https://github.com/${{ github.repository }}/releases/tag/v${{ steps.ver.outputs.VER }}"
+          RELEASE_URL: "https://github.com/${{ github.repository }}/releases/tag/${{ steps.ver.outputs.VER }}"
           REPO_URL: "https://github.com/${{ github.repository }}"
         run: |
           # 1) Отправляем сообщение с кликабельными ссылками
