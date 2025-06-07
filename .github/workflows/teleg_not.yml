@@ -1,0 +1,19 @@
+name: нотификация Телеграм
+on: 
+  workflow_dispatch:
+
+jobs:
+  notify:
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: post changelog
+        env:
+          TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          curl -s -X POST https://api.telegram.org/bot${TOKEN}/sendDocument \
+            -F chat_id=${CHAT_ID} \
+            -F document=@changelog.md
