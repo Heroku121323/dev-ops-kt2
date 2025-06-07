@@ -16,4 +16,4 @@ jobs:
         run: |
           curl -s -X POST https://api.telegram.org/bot${TOKEN}/sendDocument \
             -F chat_id=${CHAT_ID} \
-            -F document=@changelog.md
+            -F document=@CHANGELOG.md
