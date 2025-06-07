@@ -51,4 +51,4 @@ def hearts():
     typer.echo("        ❤️")
 
 if __name__ == "__main__":
-    app()#
+    app()
